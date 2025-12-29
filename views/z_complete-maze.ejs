@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">MAZE COMPLETED</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'MAZE COMPLETED' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,23 +19,22 @@
       <div class="room-content">
     <div class="room-text">
       <code>
-        You walk through the tunnel of golden light, and with each step the maze falls away behind you. The walls, the chambers, the trials - all dissolving into radiance.
+            <%- translations?.[language]?.text || `You walk through the tunnel of golden light, and with each step the maze falls away behind you. The walls, the chambers, the trials - all dissolving into radiance.
         <p>At the true center of the maze, you find yourself in a space that defies description. It's not a room, but a convergence - where all the paths meet, where all the lessons crystallize into understanding.</p>
         <br>
         <p style="color: #ffff00; font-weight: bold; text-align: center;">YOU HAVE COMPLETED THE MAZE</p>
         <br>
         <p>Whatever lies ahead, you carry those lessons with you. The maze is behind you. Your new journey begins now.</p>
-        <p>But something tells you, that you have not seen the last of the maze master...</p>
-      
-      </code>
+        <p>But something tells you, that you have not seen the last of the maze master...</p>` %>
+          </code>
     </div>
 
     <hr/>
 
     <div class="navigation">
       <p style="color: #ffff00;">Congratulations, traveler. You have proven yourself worthy.</p>
-      <a href="/maze/credits"> Go to Credits</a>
-      <a href="/">Play again from the beginning</a>
+      <a href="/maze/credits"><%= translations?.[language]?.choices?.options?.[0] || ' Go to Credits' %></a>
+      <a href="/"><%= translations?.[language]?.choices?.options?.[1] || 'Play again from the beginning' %></a>
     
     </div>
       </div>

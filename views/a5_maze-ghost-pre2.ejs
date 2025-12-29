@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">The Caverns</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'The Caverns' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,21 +19,20 @@
       <div class="room-content">
     <div class="room-text">
       <code>
-        You wonder through the crystal caverns, searching. Crystalline formations glow with inner light, casting prismatic patterns. The air hums with magical power.
+            <%- translations?.[language]?.text || `You wonder through the crystal caverns, searching. Crystalline formations glow with inner light, casting prismatic patterns. The air hums with magical power.
         <p> But something isn't quite right. Havent you been here before?</p>
         <p> There is a feeling that ahead is something dangerous and way above your level.</p>
-        <p>Maybe you got it wrong perhaps there is another way to go.</p>
-      </code>
+        <p>Maybe you got it wrong perhaps there is another way to go.</p>` %>
+          </code>
     </div>
 
     <hr/>
 
     <div class="navigation">
-      <p>You continue on but with doubts:</p>
-     <a href="/maze/ghost-pre3">You still keep moving</a>
-      <a href="/start_0">maybe head back to the start of the maze</a>
-     
-    </div>
+          <p><%= translations?.[language]?.choices?.prompt || 'You continue on but with doubts:' %></p>
+          <a href="/maze/ghost-pre3"><%= translations?.[language]?.choices?.options?.[0] || 'You still keep moving' %></a>
+          <a href="/start_0"><%= translations?.[language]?.choices?.options?.[1] || 'maybe head back to the start of the maze' %></a>
+        </div>
       </div>
     </div>
   </div>

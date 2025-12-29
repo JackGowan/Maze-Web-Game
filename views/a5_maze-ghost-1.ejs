@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">A Guardian</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'A Guardian' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,7 +19,7 @@
       <div class="room-content">
     <div class="room-text">
       <code>
-        You are in a deeper part of the maze. You awaken to the sight of a green being smiling at you. You don't know what it is. It seems weird. 
+            <%- translations?.[language]?.text || `You are in a deeper part of the maze. You awaken to the sight of a green being smiling at you. You don't know what it is. It seems weird. 
         <p>"Hi there" It says.</p>
         <p>"What's going on. What is this"</p>
         <p>"You, you, you've been asleep. You want a little drinky?"</p>
@@ -39,19 +38,18 @@
         <p>"Why not chat right now?" It would be awfully good of you stay and chat."</p>
         <p>"I'm a bit busy"</p>  
         <p>"Can't you tell me your story of how you learned of the maze and how you got here?"
-        <p>You notice you are unarmed again. Careful traveller. You sense something about this being, that as pathetic as it looks. It is very, very, dangerous. Choose wisely.</p>
-      </code>
+        <p>You notice you are unarmed again. Careful traveller. You sense something about this being, that as pathetic as it looks. It is very, very, dangerous. Choose wisely.</p>` %>
+          </code>
     </div>
 
     <hr/>
 
     <div class="navigation">
-      <p>What will you do?</p>
-      <a href="/maze/ghost-death-1">attack</a>
-      <a href="/maze/ghost-death-1">Try to walk past without engaging</a>
-      <a href="/maze/ghost-2">stay awhile and tell Greg about your experience of the maze</a>
-
-    </div>
+          <p><%= translations?.[language]?.choices?.prompt || 'What will you do?' %></p>
+          <a href="/maze/ghost-death-1"><%= translations?.[language]?.choices?.options?.[0] || 'attack' %></a>
+          <a href="/maze/ghost-death-1"><%= translations?.[language]?.choices?.options?.[1] || 'Try to walk past without engaging' %></a>
+          <a href="/maze/ghost-2"><%= translations?.[language]?.choices?.options?.[2] || 'stay awhile and tell Greg about your experience of the maze' %></a>
+        </div>
       </div>
     </div>
   </div>

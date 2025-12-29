@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">Death Behind the Door</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'Death Behind the Door' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,7 +19,7 @@
       <div class="room-content">
         <div class="room-text">
           <code>
-            <p>Your hand grips the cold iron handle. The door swings open with an ominous creak.</p>
+            <%- translations?.[language]?.text || `<p>Your hand grips the cold iron handle. The door swings open with an ominous creak.</p>
             <br>
             <p>You chose wrong.</p>
             <br>
@@ -30,13 +29,13 @@
             <br>
             <p>The wrong door. The wrong choice. The wrong end.</p>
             <br>
-            <p style="color: #ff0000; font-weight: bold; text-align: center;">YOU HAVE DIED</p>
+            <p style="color: #ff0000; font-weight: bold; text-align: center;">YOU HAVE DIED</p>` %>
           </code>
         </div>
 
         <div class="navigation">
-          <p>Your journey ends here.</p>
-          <a href="/">Start Over</a>
+          <p><%= translations?.[language]?.choices?.prompt || 'Your journey ends here.' %></p>
+          <a href="/"><%= translations?.[language]?.choices?.options?.[0] || 'Start Over' %></a>
         </div>
       </div>
     </div>

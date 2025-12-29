@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">Hidden Ways</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'Hidden Ways' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,19 +19,19 @@
       <div class="room-content">
     <div class="room-text">
       <code>
-        Following along the crystalline formations you start to understand the way of the maze. You feel it. You know it. You are it.
+            <%- translations?.[language]?.text || `Following along the crystalline formations you start to understand the way of the maze. You feel it. You know it. You are it.
          <p>Danger lies ahead. Deep dark danger.
          <p>In a dark stone tunnel you realise that a gas has been released.</p>
-      <p> You can see yourself falling down onto the floor.</p>
-        </code>
+      <p> You can see yourself falling down onto the floor.</p>` %>
+          </code>
     </div>
 
     <hr/>
 
     <div class="navigation">
-      <p>You lose consciousness:</p>
-      <a href="/maze/ghost-1">continue</a>
-    </div>
+          <p><%= translations?.[language]?.choices?.prompt || 'You lose consciousness:' %></p>
+          <a href="/maze/ghost-1"><%= translations?.[language]?.choices?.options?.[0] || 'continue' %></a>
+        </div>
       </div>
     </div>
   </div>

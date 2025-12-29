@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">Reflections on the way ahead</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'Reflections on the way ahead' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,19 +19,17 @@
       <div class="room-content">
         <div class="room-text">
           <code>
-            <p>You need to keep thinking. There is surely something you have missed. You squint at the stone walls. Perhaps there is something you have missed.</p>
-                                        
-        </code>
+            <%- translations?.[language]?.text || `<p>You need to keep thinking. There is surely something you have missed. You squint at the stone walls. Perhaps there is something you have missed.</p>` %>
+          </code>
         </div>
 
         <hr/>
 
         <div class="navigation">
-          <p>How do you respond?</p>
-          <a href="/maze/ghost-pre1">head back to the caverns</a>
-           <a href="/maze/right-dark">head right into the dark</a>
-          <a href="/maze/wait-2">investigate the room</a>
-       
+          <p><%= translations?.[language]?.choices?.prompt || 'How do you respond?' %></p>
+          <a href="/maze/ghost-pre1"><%= translations?.[language]?.choices?.options?.[0] || 'head back to the caverns' %></a>
+          <a href="/maze/right-dark"><%= translations?.[language]?.choices?.options?.[1] || 'head right into the dark' %></a>
+          <a href="/maze/wait-2"><%= translations?.[language]?.choices?.options?.[2] || 'investigate the room' %></a>
         </div>
       </div>
     </div>

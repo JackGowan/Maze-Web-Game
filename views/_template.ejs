@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
+<head>
+<!-- meta attributes -->
+<meta charset="utf-8">
+<meta name="author" content="Jack Gowan">
+<meta name="description" content="first built maze">
+<title>The Maze - <%= language === 'zh' ? '迷宮' : 'The Maze' %></title>
+<link rel="stylesheet" href="/css/a_maze_style.css">
+</head>
+<body>
+  <% if (translations[language]?.title) { %>
+  <h1 class="main-title"><%= translations[language].title %></h1>
+  <% } %>
+
+  <div class="room-container">
+    <div class="content-wrapper">
+      <div class="room-image">
+        <img src="/images/PAGE_IMAGE.png" alt="Room image">
+      </div>
+      <div class="room-content">
+        <div class="room-text">
+          <code>
+            <%- translations[language]?.text || 'DEFAULT_TEXT_HERE' %>
+          </code>
+        </div>
+
+        <hr/>
+
+        <div class="navigation">
+          <p><%= translations[language]?.choices?.prompt || 'Do you:' %></p>
+          <!-- Add navigation links here -->
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+  </html>

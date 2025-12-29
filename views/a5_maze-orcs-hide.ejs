@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">Discovered</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'Discovered' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,23 +19,23 @@
       <div class="room-content">
     <div class="room-text">
       <code>
-        You edge along the wall toward the side passage. Moving slowly, carefully, keeping tapestries between you and the orcs.
+            <%- translations?.[language]?.text || `You edge along the wall toward the side passage. Moving slowly, carefully, keeping tapestries between you and the orcs.
         <p>Almost there. Just a few more steps...</p>
         <p>CRACK! Your foot lands on a discarded bone. The sound echoes.</p>
         <p>Ten pairs of bloodshot eyes turn toward you. Silence.</p>
          <p>"HUMAN! IN OUR HALL!" one bellows.</p>
         <p>You try to run but they surround you. Ten orcs, even fat ones, are too many. Their crude weapons fall like rain. Your enchanted sword claims two before the numbers overwhelm you.</p>
         <p style="color: #ff0000; font-weight: bold; text-align: center;">YOU HAVE DIED</p>
-        <p>One brave man trained, is stronger than an idle ten .</p>
-      </code>
+        <p>One brave man trained, is stronger than an idle ten .</p>` %>
+          </code>
     </div>
 
     <hr/>
 
     <div class="navigation">
-      <p>Your journey ends here:</p>
-      <a href="/">Try again from the beginning</a>
-    </div>
+          <p><%= translations?.[language]?.choices?.prompt || 'Your journey ends here:' %></p>
+          <a href="/"><%= translations?.[language]?.choices?.options?.[0] || 'Try again from the beginning' %></a>
+        </div>
       </div>
     </div>
   </div>

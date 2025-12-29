@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">A desperate leap</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'A desperate leap' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,17 +19,16 @@
       <div class="room-content">
         <div class="room-text">
           <code>
-            You don't think. There's no time to think. You run toward the broken bridge, your feet pounding on ancient stone.
+            <%- translations?.[language]?.text || `You don't think. There's no time to think. You run toward the broken bridge, your feet pounding on ancient stone.
            <p>You JUMP.</p>
             <p style="color: #ff0000; font-weight: bold; text-align: center;">YOU HAVE DIED</p>
             
-            <p>well you were warned!</p>
-           
-        </code>
+            <p>well you were warned!</p>` %>
+          </code>
         </div>
         <hr/>
         <div class="navigation">
-        <a href="/">Try again from the beginning</a>
+        <a href="/"><%= translations?.[language]?.choices?.options?.[0] || 'Try again from the beginning' %></a>
         </div>
       </div>
     </div>

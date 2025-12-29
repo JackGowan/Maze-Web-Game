@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">The Journey Recounted</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'The Journey Recounted' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,7 +19,7 @@
       <div class="room-content">
     <div class="room-text">
       <code>
-        You tell the ghost about your childhood and teenage years. The hours flow by just as one bottle of bailey's follows another. Greg wants to know everything about you.
+            <%- translations?.[language]?.text || `You tell the ghost about your childhood and teenage years. The hours flow by just as one bottle of bailey's follows another. Greg wants to know everything about you.
         On and on you talk. Everytime you skim over details of your life Greg stops you and insists that you go deeper into your life. Creamy smooth bailey's flows down you as you recall all who you are.
         And after some time you fall asleep. 
         <P>The next day you awken and Greg is staring at you expectantly. He wants you to continue your story of your teenage years. And so you talk on and throughout the day about yourself. No stone left untutned. The bailey's keeps being poured. </p>
@@ -32,18 +31,18 @@
         <p></p>"I do water colours" Greg says close to your ear. Me and you can paint one day. I'm gonna show some of them later." </p>
         <p>"That sounds like some thing I would very much like" You gulp. You can see Greg's power more and more.</p>
         <p>"Tell me about your darkest fears?" Greg says. He is warming to you.</p>
-        <p>The air crackles with magical energy.</p>
-      </code>
+        <p>The air crackles with magical energy.</p>` %>
+          </code>
     </div>
 
     <hr/>
 
     <div class="navigation">
-      <p>Choose your response:</p>
-       <a href="/maze/ghost3-ext1">Pour Greg a glass of bailey's and ask instead about his water colour pictures</a>
-      <a href="/maze/ghost-4">Share honestly about the weight on you</a>
-      <a href="/maze/ghost-death-3">Deflect - some memories are too personal</a>
-    </div>
+          <p><%= translations?.[language]?.choices?.prompt || 'Choose your response:' %></p>
+          <a href="/maze/ghost3-ext1"><%= translations?.[language]?.choices?.options?.[0] || 'Pour Greg a glass of bailey\'s and ask instead about his water colour pictures' %></a>
+          <a href="/maze/ghost-4"><%= translations?.[language]?.choices?.options?.[1] || 'Share honestly about the weight on you' %></a>
+          <a href="/maze/ghost-death-3"><%= translations?.[language]?.choices?.options?.[2] || 'Deflect - some memories are too personal' %></a>
+        </div>
       </div>
     </div>
   </div>

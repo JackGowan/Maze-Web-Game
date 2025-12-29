@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">The Excitement of Escape</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'The Excitement of Escape' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,7 +19,7 @@
       <div class="room-content">
     <div class="room-text">
       <code>
-        You take Alice's hand. "Together."
+            <%- translations?.[language]?.text || `You take Alice's hand. "Together."
         <p>"We are near the main rune door" Alice pulls at your hand tight "We must hurry".</p>
         <p>Alice squeezes your hand tight. Is it you or has her face changed? Who is she?</p>
         <p>Beyond - a stone rune door.</p>
@@ -29,17 +28,17 @@
         <p>"I will likely be gone from this world."</p>
         <p> "Forever?"</p>
         <p> "I can't say..."</p>
-        <p> Deep down you realise that Alice is completely at your command. She will do as you wish.</p>  
-      </code>
+        <p> Deep down you realise that Alice is completely at your command. She will do as you wish.</p>` %>
+          </code>
     </div>
 
     <hr/>
 
     <div class="navigation">
-      <p>Choose your path:</p>
-      <a href="/maze/alice-8">Ask Alice to open the door</a>
-      <a href="/maze/alice-death-7">Order Alice away you will solve the rune door by yourself</a>
-    </div>
+          <p><%= translations?.[language]?.choices?.prompt || 'Choose your path:' %></p>
+          <a href="/maze/alice-8"><%= translations?.[language]?.choices?.options?.[0] || 'Ask Alice to open the door' %></a>
+          <a href="/maze/alice-death-7"><%= translations?.[language]?.choices?.options?.[1] || 'Order Alice away you will solve the rune door by yourself' %></a>
+        </div>
       </div>
     </div>
   </div>

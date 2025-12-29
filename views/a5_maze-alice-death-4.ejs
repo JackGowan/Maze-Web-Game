@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">Separated</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'Separated' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,23 +19,23 @@
       <div class="room-content">
     <div class="room-text">
       <code>
-        "Stay here. I'll check if the passage is safe."
+            <%- translations?.[language]?.text || `"Stay here. I'll check if the passage is safe."
         <p>Alice's eyes fill with fear. "Please don't leave me alone..." But you're already wading into murky water.</p>
         <p>Water rises to your chest. You push forward, lantern high. Behind you, Alice's voice: "Wait! I hear something—"</p>
         <p>Then her scream. Splashing, snarling, desperate cries for help.</p>
         <p>You try to rush back but the current is strong, the passage too narrow. By the time you reach the junction - only blood on stones and drag marks toward the trapdoor.</p>
         <p>A beast man's laugh echoes above. Without Alice, you're lost. You wander flooded tunnels until exhaustion drags you under.</p>
         <p style="color: #ff0000; font-weight: bold; text-align: center;">YOU HAVE DIED</p>
-        <p>Never leave your companion vulnerable and alone.</p>
-      </code>
+        <p>Never leave your companion vulnerable and alone.</p>` %>
+          </code>
     </div>
 
     <hr/>
 
     <div class="navigation">
-      <p>Your journey ends here:</p>
-      <a href="/">Try again from the beginning</a>
-    </div>
+          <p><%= translations?.[language]?.choices?.prompt || 'Your journey ends here:' %></p>
+          <a href="/"><%= translations?.[language]?.choices?.options?.[0] || 'Try again from the beginning' %></a>
+        </div>
       </div>
     </div>
   </div>

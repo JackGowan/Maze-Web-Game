@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">The Chamber of Six</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'The Chamber of Six' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,7 +19,7 @@
       <div class="room-content">
         <div class="room-text">
           <code>
-            <p>You enter a vast chamber. The walls are lined with hundreds of drawn bows, arrows nocked and aimed at six stone panels in the center of the room.</p>
+            <%- translations?.[language]?.text || `<p>You enter a vast chamber. The walls are lined with hundreds of drawn bows, arrows nocked and aimed at six stone panels in the center of the room.</p>
             <p>Each panel bears a number: 1, 2, 3, 4, 5, and 6.</p>
             <p>Above the panels, an inscription glows with an eerie light:</p>
             <br>
@@ -32,19 +31,18 @@
             <p><em>One path of sibling death in a foreign land of pasta</em></p>
             <p><em>One path of death in the foreign land of stone</em></p>
             <br>
-            <p>Your hand trembles as you approach. One wrong choice means death by a thousand arrows.</p>
-         
+            <p>Your hand trembles as you approach. One wrong choice means death by a thousand arrows.</p>` %>
           </code>
         </div>
 
         <div class="navigation">
-          <p>Which panel do you press?</p>
-          <a href="/maze/dark-trap-6-sanjyu-golden-room-2">Press Panel 1</a>
-          <a href="/maze/dark-trap-6-sanjyu-golden-room-2">Press Panel 2</a>
-          <a href="/maze/dark-trap-6-sanjyu-golden-room-2">Press Panel 3</a>
-          <a href="/maze/dark-trap-6-sanjyu-golden-room-2">Press Panel 4</a>
-          <a href="/maze/dark-trap-6-sanjyu-golden-room-1">Press Panel 5</a>
-          <a href="/maze/dark-trap-6-sanjyu-golden-room-2">Press Panel 6</a>
+          <p><%= translations?.[language]?.choices?.prompt || 'Which panel do you press?' %></p>
+          <a href="/maze/dark-trap-6-sanjyu-golden-room-2"><%= translations?.[language]?.choices?.options?.[0] || 'Press Panel 1' %></a>
+          <a href="/maze/dark-trap-6-sanjyu-golden-room-2"><%= translations?.[language]?.choices?.options?.[1] || 'Press Panel 2' %></a>
+          <a href="/maze/dark-trap-6-sanjyu-golden-room-2"><%= translations?.[language]?.choices?.options?.[2] || 'Press Panel 3' %></a>
+          <a href="/maze/dark-trap-6-sanjyu-golden-room-2"><%= translations?.[language]?.choices?.options?.[3] || 'Press Panel 4' %></a>
+          <a href="/maze/dark-trap-6-sanjyu-golden-room-1"><%= translations?.[language]?.choices?.options?.[4] || 'Press Panel 5' %></a>
+          <a href="/maze/dark-trap-6-sanjyu-golden-room-2"><%= translations?.[language]?.choices?.options?.[5] || 'Press Panel 6' %></a>
         </div>
       </div>
     </div>

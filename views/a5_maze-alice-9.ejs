@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">The sacrifice</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'The sacrifice' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,21 +19,21 @@
       <div class="room-content">
     <div class="room-text">
       <code>
-         Alice turns into the fire of the rune door. In half silence she chants wildly taming the magic of the door.</p>
+            <%- translations?.[language]?.text || `Alice turns into the fire of the rune door. In half silence she chants wildly taming the magic of the door.</p>
         <p>Fixed on the spot there is nothing you can do as Alice is consumed by the door's magic.</p>
         <p>She disintegrates before you...</p>
         <p>Gone.</p>
         <p>But now you can proceed</p>
-        <p>"Oh well." You shrug your shoulders.</p>
-      </code>
+        <p>"Oh well." You shrug your shoulders.</p>` %>
+          </code>
     </div>
 
     <hr/>
 
     <div class="navigation">
-      <p>You have no choice:</p>
-      <a href="/maze/alice-10">The rune door has opened</a>
-         </div>
+          <p><%= translations?.[language]?.choices?.prompt || 'You have no choice:' %></p>
+          <a href="/maze/alice-10"><%= translations?.[language]?.choices?.options?.[0] || 'The rune door has opened' %></a>
+        </div>
       </div>
     </div>
   </div>

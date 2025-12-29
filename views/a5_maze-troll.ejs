@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">Guardian of the Deep</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'Guardian of the Deep' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,22 +19,22 @@
       <div class="room-content">
     <div class="room-text">
       <code>
-        <p>Yellow, bloodshot eyes fix on you.</p> 
+            <%- translations?.[language]?.text || `<p>Yellow, bloodshot eyes fix on you.</p> 
         <p>"HUMAN," it rumbles like grinding rocks. "TURN BACK OR DIE."</p>
         <p>Your enchanted sword gleams. You're armed, prepared. The troll looks slow, brutish. You could take it.</p>
         <p>But then you notice something odd. The troll's eyes aren't entirely hostile. Sad? Tired?</p>
         <p>This creature has been here a long time. Alone.</p>
-        <p>The troll raises a massive club, the motion reluctant. "DON'T MAKE TROLL HURT YOU."</p>
-      </code>
+        <p>The troll raises a massive club, the motion reluctant. "DON'T MAKE TROLL HURT YOU."</p>` %>
+          </code>
     </div>
 
     <hr/>
 
     <div class="navigation">
-      <p>Choose your approach:</p>
-      <a href="/maze/troll-kill">Attack the troll with your sword</a>
-      <a href="/maze/troll-nice">Lower your weapon and try to talk to the troll</a>
-    </div>
+          <p><%= translations?.[language]?.choices?.prompt || 'Choose your approach:' %></p>
+          <a href="/maze/troll-kill"><%= translations?.[language]?.choices?.options?.[0] || 'Attack the troll with your sword' %></a>
+          <a href="/maze/troll-nice"><%= translations?.[language]?.choices?.options?.[1] || 'Lower your weapon and try to talk to the troll' %></a>
+        </div>
       </div>
     </div>
   </div>

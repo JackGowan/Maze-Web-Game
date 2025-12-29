@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">Exploring the Crystal</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'Exploring the Crystal' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,23 +19,22 @@
       <div class="room-content">
     <div class="room-text">
       <code>
-       "So you found me" A man says from within the glowing rock.
+            <%- translations?.[language]?.text || `"So you found me" A man says from within the glowing rock.
       <p>"Indeed I have man in the crystal or should I say maze master" You relish the words. </p>
       <p>"You seem a little... put out. Did you suffer to get here?" The maze master looks at you with great wisdom.</p> 
       <p>"More than a little."</p>
       <p>"I perhaps should have made it harder." The Maze master ponders.</p>
       <p>"Its too late now."</p>
-      <p>"That is true."</p>
-      
-      </code>
+      <p>"That is true."</p>` %>
+          </code>
     </div>
 
     <hr/>
 
     <div class="navigation">
-      <p>You ponder on your next step</p>
-      <a href="/maze/give-up">Talk further</a>
-  </div>
+          <p><%= translations?.[language]?.choices?.prompt || 'You ponder on your next step' %></p>
+          <a href="/maze/give-up"><%= translations?.[language]?.choices?.options?.[0] || 'Talk further' %></a>
+        </div>
       </div>
     </div>
   </div>

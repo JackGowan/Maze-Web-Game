@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">Into the Darkness</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'Into the Darkness' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,23 +19,23 @@
       <div class="room-content">
         <div class="room-text">
           <code>
-            You step into the darkness, lantern held high. The passage is silent - unnaturally so. No dripping water, no distant sounds, nothing.
+            <%- translations?.[language]?.text || `You step into the darkness, lantern held high. The passage is silent - unnaturally so. No dripping water, no distant sounds, nothing.
             <p>Your footsteps echo strangely. The walls are smooth, featureless black stone. This part of the maze feels different. Older. More dangerous.</p>
             <p>Ahead, the corridor splits three ways. The left passage has strange beast symbols carved into the archway. The center passage looks completely clear and safe. The right passage has scorch marks around its entrance.</p>
             <p>In this silence, you hear your own breathing loud in your ears. One of these paths is trapped. Or maybe all of them are.</p>
           
-            <p> You realise you are in the realm of traps, a deadly section of the maze. Surely there are easier ways through? From the little information you have you are certain that passage that is damaged is the way through.</p>
+            <p> You realise you are in the realm of traps, a deadly section of the maze. Surely there are easier ways through? From the little information you have you are certain that passage that is damaged is the way through.</p>` %>
           </code>
         </div>
 
         <hr/>
 
         <div class="navigation">
-          <p>Choose your path:</p>
-          <a href="/maze/dark-trap-1-left">Take the left passage with the beast symbols</a>
-          <a href="/maze/dark-trap-1-center">Take the center passage that looks safe</a>
-          <a href="/maze/dark-trap-1-right">Take the right passage with scorch marks</a>
-          <a href="/maze/left-light">go back the other way. You have a bad feeling about this.</a>
+          <p><%= translations?.[language]?.choices?.prompt || 'Choose your path:' %></p>
+          <a href="/maze/dark-trap-1-left"><%= translations?.[language]?.choices?.options?.[0] || 'Take the left passage with the beast symbols' %></a>
+          <a href="/maze/dark-trap-1-center"><%= translations?.[language]?.choices?.options?.[1] || 'Take the center passage that looks safe' %></a>
+          <a href="/maze/dark-trap-1-right"><%= translations?.[language]?.choices?.options?.[2] || 'Take the right passage with scorch marks' %></a>
+          <a href="/maze/left-light"><%= translations?.[language]?.choices?.options?.[3] || 'go back the other way. You have a bad feeling about this.' %></a>
         </div>
       </div>
     </div>

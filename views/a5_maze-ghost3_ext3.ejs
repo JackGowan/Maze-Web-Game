@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">The Journey Recounted</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'The Journey Recounted' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,21 +19,20 @@
       <div class="room-content">
     <div class="room-text">
       <code>
-        <p>"This is a bottle of bailey's"</p>
+            <%- translations?.[language]?.text || `<p>"This is a bottle of bailey's"</p>
         <p>"Fascinating I think this might be your best picture"</p>
-        <p>"let me keep digging up some pictures."</p>
-      </code>
+        <p>"let me keep digging up some pictures."</p>` %>
+          </code>
     </div>
 
     <hr/>
 
     <div class="navigation">
-      <p>Choose your response:</p>
-      <a href="/maze/ghost3-ext1">Look at more Water colours</a>
-       <a href="/maze/ghost-4">Distract him. Share with him your darkest fears</a>
-     <a href="/maze/ghost-death-2">Shout "Enough of these games - I want out of this place."</a>
-
-    </div>
+          <p><%= translations?.[language]?.choices?.prompt || 'Choose your response:' %></p>
+          <a href="/maze/ghost3-ext1"><%= translations?.[language]?.choices?.options?.[0] || 'Look at more Water colours' %></a>
+          <a href="/maze/ghost-4"><%= translations?.[language]?.choices?.options?.[1] || 'Distract him. Share with him your darkest fears' %></a>
+          <a href="/maze/ghost-death-2"><%= translations?.[language]?.choices?.options?.[2] || 'Shout "Enough of these games - I want out of this place."' %></a>
+        </div>
       </div>
     </div>
   </div>

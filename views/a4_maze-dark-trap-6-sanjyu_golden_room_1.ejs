@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">The Golden Chamber of Thirty-Six</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'The Golden Chamber of Thirty-Six' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,7 +19,7 @@
       <div class="room-content">
         <div class="room-text">
           <code>
-            <p>The arrows remain still. You survived.</p>
+            <%- translations?.[language]?.text || `<p>The arrows remain still. You survived.</p>
             <p>You step through into a magnificent golden chamber. Before you stands a massive circular table with 36 ornate chalices, each filled with shimmering liquid.</p>
             <p>The chalices are arranged in a perfect 6x6 grid, numbered 1 through 36.</p>
             <p>A skeletal hand clutches a parchment near chalice 13. The warning is clear: all but one contain deadly poison.</p>
@@ -37,51 +36,49 @@
             <p><em>As high is ceiling and low is floor. </em></p>                
             <p><em>Drink from this and pass through the door."</em></p>
             <br>
-            <p>Behind the table, you see a sealed passageway that will only open when the correct chalice is chosen.</p>
-          
+            <p>Behind the table, you see a sealed passageway that will only open when the correct chalice is chosen.</p>` %>
           </code>
         </div>
 
         <div class="navigation">
-            <p>Which chalice do you drink from?</p>
-           <a href="/maze/left-light">You won't drink any. You'll go back to the start</a> 
-          <br>
-           <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 1</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 2</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 3</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 4</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 5</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 6</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 7</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 8</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 9</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 10</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 11</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 12</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 13</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 14</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 15</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 16</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 17</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 18</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 19</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 20</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 21</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 22</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 23</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 24</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 25</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 26</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 27</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 28</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 29</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 30</a>
-          <a href="/maze/dark-trap-7-hyaku-room-1">Chalice 31</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 32</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 33</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 34</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 35</a>
-          <a href="/maze/dark-trap-7-hyaku-room-3">Chalice 36</a>
+          <p><%= translations?.[language]?.choices?.prompt || 'Which chalice do you drink from?' %></p>
+          <a href="/maze/left-light"><%= translations?.[language]?.choices?.options?.[0] || 'You won\'t drink any. You\'ll go back to the start' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[1] || 'Chalice 1' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[2] || 'Chalice 2' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[3] || 'Chalice 3' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[4] || 'Chalice 4' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[5] || 'Chalice 5' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[6] || 'Chalice 6' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[7] || 'Chalice 7' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[8] || 'Chalice 8' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[9] || 'Chalice 9' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[10] || 'Chalice 10' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[11] || 'Chalice 11' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[12] || 'Chalice 12' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[13] || 'Chalice 13' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[14] || 'Chalice 14' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[15] || 'Chalice 15' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[16] || 'Chalice 16' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[17] || 'Chalice 17' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[18] || 'Chalice 18' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[19] || 'Chalice 19' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[20] || 'Chalice 20' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[21] || 'Chalice 21' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[22] || 'Chalice 22' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[23] || 'Chalice 23' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[24] || 'Chalice 24' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[25] || 'Chalice 25' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[26] || 'Chalice 26' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[27] || 'Chalice 27' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[28] || 'Chalice 28' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[29] || 'Chalice 29' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[30] || 'Chalice 30' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-1"><%= translations?.[language]?.choices?.options?.[31] || 'Chalice 31' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[32] || 'Chalice 32' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[33] || 'Chalice 33' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[34] || 'Chalice 34' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[35] || 'Chalice 35' %></a>
+          <a href="/maze/dark-trap-7-hyaku-room-3"><%= translations?.[language]?.choices?.options?.[36] || 'Chalice 36' %></a>
         </div>
       </div>
     </div>

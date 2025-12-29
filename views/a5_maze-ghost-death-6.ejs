@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">Fatal Disrespect</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'Fatal Disrespect' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,23 +19,23 @@
       <div class="room-content">
     <div class="room-text">
       <code>
-         You run in with your sword. 
+            <%- translations?.[language]?.text || `You run in with your sword. 
         <p>The cavern goes black. Temperature drops fifty degrees. You can't move. Frozen in place.</p>
         <p>Greg's voice becomes terrible, ancient rage given sound: "YOU TRY TO HURT ME? YOU'RE MY BEST FRIEND SINCE CURLY JEFFERSON, YOU WOULD DENY ME EVEN THE COURTESY OF COMPANIONSHIP!"</p>
         <p> You are unable to respond</p>
         <p>"ME AND YOU WERE GETTING SO CLOSE. SO I WILL TAKE WHAT I NEED."</p>
         <p>The darkness enters your mouth, eyes, ears. Greg consumes your memories, experiences, your very soul - feasting on your essence for entertainment.</p>
         <p style="color: #ff0000; font-weight: bold; text-align: center;">YOU HAVE DIED</p>
-        <p>Never under any circumstances attack a demon lord</p>
-      </code>
+        <p>Never under any circumstances attack a demon lord</p>` %>
+          </code>
     </div>
 
     <hr/>
 
     <div class="navigation">
-      <p>Your journey ends here:</p>
-      <a href="/">Try again from the beginning</a>
-    </div>
+          <p><%= translations?.[language]?.choices?.prompt || 'Your journey ends here:' %></p>
+          <a href="/"><%= translations?.[language]?.choices?.options?.[0] || 'Try again from the beginning' %></a>
+        </div>
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <div class="room-container">
+<div class="room-container">
     <div class="content-wrapper">
       <div class="room-image">
         <img src="/images/a2_maze-flee.png" alt="Running for your life">
@@ -18,7 +17,7 @@
       <div class="room-content">
         <div class="room-text">
           <code>
-            Terror seizes your heart. You turn and sprint down the corridor as the door explodes behind you. A shriek pierces the darkness.You don't look back - but some thing is after you.        <p>CLICK-CLACK-CLICK-CLACK </p>
+            <%- translations?.[language]?.text || `Terror seizes your heart. You turn and sprint down the corridor as the door explodes behind you. A shriek pierces the darkness.You don't look back - but some thing is after you.        <p>CLICK-CLACK-CLICK-CLACK </p>
             <p>CLICK-CLACK-CLICK-CLACK.</p>
             <p>You round a corner, your elven lantern swinging wildly, casting mad shadows on the walls. Left turn. Right turn. Another left. The maze is a blur of stone and darkness. Your lungs burn, gasping for air.
             <p>CLICK-CLACK-CLICK-CLACK.</p>
@@ -26,16 +25,16 @@
             <p>To your left, an ancient stone bridge spans a chasm of unknown depth. The bridge is broken in the middle - a gap of about six feet separates the two halves. You'd have to jump. In the dark. While exhausted. With that THING right behind you. Don't do it traveller!</p>
             <p>To your right, a steep staircase heads upwards</p>
             <p>CLICK-CLACK-CLICK-CLACK-CLICK! It's almost upon you! The sound of claws scraping stone is right around the last corner!</p>
-            <p style="font-weight: bold;">What do you do?!</p>
+            <p style="font-weight: bold;">What do you do?!</p>` %>
           </code>
         </div>
 
         <hr/>
 
         <div class="navigation">
-          <p>Choose quickly:</p>
-          <a href="/maze/after-chasm">Jump across the broken bridge</a>
-          <a href="/maze/hide-stairs">run up the stairs!</a>
+          <p><%= translations?.[language]?.choices?.prompt || 'Choose quickly:' %></p>
+          <a href="/maze/after-chasm"><%= translations?.[language]?.choices?.options?.[0] || 'Jump across the broken bridge' %></a>
+          <a href="/maze/hide-stairs"><%= translations?.[language]?.choices?.options?.[1] || 'run up the stairs!' %></a>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">The three doors</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'The three doors' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,10 +19,10 @@
       <div class="room-content">
         <div class="room-text">
     <code>
-            The scorch marks suggest danger, but also that someone survived this path before. You choose the right passage.                                 
+            <%- translations?.[language]?.text || `The scorch marks suggest danger, but also that someone survived this path before. You choose the right passage.                                 
          <p> ahead, the passage continues into more darkness. You hear water dripping somewhere up ahead.</p>
             <p>Around a bend, you find another choice: three doorways. One door is made of iron. One is wooden. One is just an open archway with no door at all.</p>
-            <p>Carved into the wall beside them, you notice ancient writing:</p>
+            <p>Carved into the wall beside them, you notice ancient writing:</p>` %>
           </code>
           
           <div style="border: 2px solid #00ff00; padding: 15px; margin: 20px 0; background-color: rgba(0, 255, 0, 0.05);">
@@ -39,10 +38,10 @@
         <hr/>
 
         <div class="navigation">
-          <p>This riddle is important - you need to think...</p>
-          <a href="/maze/dark-trap-2-iron">Enter through the iron door</a>
-          <a href="/maze/dark-trap-2-wood">Enter through the wooden door</a>
-          <a href="/maze/dark-trap-2-open">Enter through the open archway</a>
+          <p><%= translations?.[language]?.choices?.prompt || 'This riddle is important - you need to think...' %></p>
+          <a href="/maze/dark-trap-2-iron"><%= translations?.[language]?.choices?.options?.[0] || 'Enter through the iron door' %></a>
+          <a href="/maze/dark-trap-2-wood"><%= translations?.[language]?.choices?.options?.[1] || 'Enter through the wooden door' %></a>
+          <a href="/maze/dark-trap-2-open"><%= translations?.[language]?.choices?.options?.[2] || 'Enter through the open archway' %></a>
         </div>
       </div>
     </div>

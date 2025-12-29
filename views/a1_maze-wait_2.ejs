@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">Reflections on the way ahead</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'Reflections on the way ahead' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,19 +19,18 @@
       <div class="room-content">
         <div class="room-text">
           <code>
-            <p>A door reveals itself to you. 
+            <%- translations?.[language]?.text || `<p>A door reveals itself to you. 
               A secret of the maze was that you didn't need to rush through all the lairs. The answer was right here before you all along.
             The tunnel ahead looks like it is goes deep into the maze. Through patience you have earned the right to go forward.           </p>
-            <p> You are all too aware that you have missed out on a serious of deadly encounters.</p>                             
-        </code>
+            <p> You are all too aware that you have missed out on a serious of deadly encounters.</p>` %>
+          </code>
         </div>
 
         <hr/>
 
         <div class="navigation">
-          <p>You have no choice</p>
-              <a href="/maze/ghost-pre5">You walk through the tunnel.</a>
-       
+          <p><%= translations?.[language]?.choices?.prompt || 'You have no choice' %></p>
+          <a href="/maze/ghost-pre5"><%= translations?.[language]?.choices?.options?.[0] || 'You walk through the tunnel.' %></a>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">The Endless Hall of Fifty Doors</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'The Endless Hall of Fifty Doors' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,7 +19,7 @@
       <div class="room-content">
         <div class="room-text">
           <code>
-            <p>The passage opens. You survived the poison.</p>
+            <%- translations?.[language]?.text || `<p>The passage opens. You survived the poison.</p>
             <p>You are in a long corridor. Stretching before you are exactly 50 identical wooden doors, each bearing only a number.</p>
             <p>The air is thick with ancient magic. You know instinctively that choosing wrong means certain death.</p>
             <p>Carved into the stone archway above, you read:</p>
@@ -30,64 +29,63 @@
    
             <p>The rest of the text has been destroyed. You search around desparate for another clue but there is nothing else. </p>  
             <p> Who is this mad genious who devised such a riddle? You rack your brain but nothing related to demons and numbers come up.</p>
-            <p>The doors seem to pulse with malevolent energy. Screams echo faintly behind some of them.</p>
-                  </code>
+            <p>The doors seem to pulse with malevolent energy. Screams echo faintly behind some of them.</p>` %>
+          </code>
         </div>
 
         <div class="navigation">
-              <p>Which door do you open?</p>
-          <a href="/maze/left-light">head back to the start and go another way</a>
-          <br>
-          <a href="/maze/dark-trap-8-room-1">Door 1</a>
-          <a href="/maze/dark-trap-8-room-1">Door 2</a>
-          <a href="/maze/dark-trap-8-room-1">Door 3</a>
-          <a href="/maze/dark-trap-8-room-1">Door 4</a>
-          <a href="/maze/dark-trap-8-room-1">Door 5</a>
-          <a href="/maze/dark-trap-8-room-1">Door 6</a>
-          <a href="/maze/dark-trap-8-room-1">Door 7</a>
-          <a href="/maze/dark-trap-8-room-1">Door 8</a>
-          <a href="/maze/dark-trap-8-room-1">Door 9</a>
-          <a href="/maze/dark-trap-8-room-1">Door 10</a>
-          <a href="/maze/dark-trap-8-room-1">Door 11</a>
-          <a href="/maze/dark-trap-8-room-1">Door 12</a>
-          <a href="/maze/dark-trap-8-room-1">Door 13</a>
-          <a href="/maze/dark-trap-8-room-1">Door 14</a>
-          <a href="/maze/dark-trap-8-room-1">Door 15</a>
-          <a href="/maze/dark-trap-8-room-1">Door 16</a>
-          <a href="/maze/dark-trap-8-room-1">Door 17</a>
-          <a href="/maze/dark-trap-8-room-1">Door 18</a>
-          <a href="/maze/dark-trap-8-room-1">Door 19</a>
-          <a href="/maze/dark-trap-8-room-1">Door 20</a>
-          <a href="/maze/dark-trap-8-room-1">Door 21</a>
-          <a href="/maze/dark-trap-8-room-1">Door 22</a>
-          <a href="/maze/dark-trap-8-room-1">Door 23</a>
-          <a href="/maze/dark-trap-8-room-1">Door 24</a>
-          <a href="/maze/dark-trap-8-room-1">Door 25</a>
-          <a href="/maze/dark-trap-8-room-1">Door 26</a>
-          <a href="/maze/dark-trap-8-room-1">Door 27</a>
-          <a href="/maze/dark-trap-8-room-1">Door 28</a>
-          <a href="/maze/dark-trap-8-room-2">Door 29</a>
-          <a href="/maze/dark-trap-8-room-1">Door 30</a>
-          <a href="/maze/dark-trap-8-room-1">Door 31</a>
-          <a href="/maze/dark-trap-8-room-1">Door 32</a>
-          <a href="/maze/dark-trap-8-room-1">Door 33</a>
-          <a href="/maze/dark-trap-8-room-1">Door 34</a>
-          <a href="/maze/dark-trap-8-room-1">Door 35</a>
-          <a href="/maze/dark-trap-8-room-1">Door 36</a>
-          <a href="/maze/dark-trap-8-room-1">Door 37</a>
-          <a href="/maze/dark-trap-8-room-1">Door 38</a>
-          <a href="/maze/dark-trap-8-room-1">Door 39</a>
-          <a href="/maze/dark-trap-8-room-1">Door 40</a>
-          <a href="/maze/dark-trap-8-room-1">Door 41</a>
-          <a href="/maze/dark-trap-8-room-1">Door 42</a>
-          <a href="/maze/dark-trap-8-room-1">Door 43</a>
-          <a href="/maze/dark-trap-8-room-1">Door 44</a>
-          <a href="/maze/dark-trap-8-room-1">Door 45</a>
-          <a href="/maze/dark-trap-8-room-1">Door 46</a>
-          <a href="/maze/dark-trap-8-room-1">Door 47</a>
-          <a href="/maze/dark-trap-8-room-1">Door 48</a>
-          <a href="/maze/dark-trap-8-room-1">Door 49</a>
-          <a href="/maze/dark-trap-8-room-1">Door 50</a>
+          <p><%= translations?.[language]?.choices?.prompt || 'Which door do you open?' %></p>
+          <a href="/maze/left-light"><%= translations?.[language]?.choices?.options?.[0] || 'head back to the start and go another way' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[1] || 'Door 1' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[2] || 'Door 2' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[3] || 'Door 3' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[4] || 'Door 4' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[5] || 'Door 5' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[6] || 'Door 6' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[7] || 'Door 7' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[8] || 'Door 8' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[9] || 'Door 9' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[10] || 'Door 10' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[11] || 'Door 11' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[12] || 'Door 12' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[13] || 'Door 13' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[14] || 'Door 14' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[15] || 'Door 15' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[16] || 'Door 16' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[17] || 'Door 17' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[18] || 'Door 18' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[19] || 'Door 19' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[20] || 'Door 20' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[21] || 'Door 21' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[22] || 'Door 22' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[23] || 'Door 23' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[24] || 'Door 24' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[25] || 'Door 25' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[26] || 'Door 26' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[27] || 'Door 27' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[28] || 'Door 28' %></a>
+          <a href="/maze/dark-trap-8-room-2"><%= translations?.[language]?.choices?.options?.[29] || 'Door 29' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[30] || 'Door 30' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[31] || 'Door 31' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[32] || 'Door 32' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[33] || 'Door 33' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[34] || 'Door 34' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[35] || 'Door 35' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[36] || 'Door 36' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[37] || 'Door 37' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[38] || 'Door 38' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[39] || 'Door 39' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[40] || 'Door 40' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[41] || 'Door 41' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[42] || 'Door 42' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[43] || 'Door 43' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[44] || 'Door 44' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[45] || 'Door 45' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[46] || 'Door 46' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[47] || 'Door 47' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[48] || 'Door 48' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[49] || 'Door 49' %></a>
+          <a href="/maze/dark-trap-8-room-1"><%= translations?.[language]?.choices?.options?.[50] || 'Door 50' %></a>
         </div>
       </div>
     </div>

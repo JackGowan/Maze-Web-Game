@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">The choice</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'The choice' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,22 +19,22 @@
       <div class="room-content">
     <div class="room-text">
       <code>
-        You take Alice's hand. "Open the door"
+            <%- translations?.[language]?.text || `You take Alice's hand. "Open the door"
         <p>"As you so wish."</p>
         <p>She moves you aside and begins to chant. Wild bright light begins to emmanate from the rune door.</p>
         <p>"I've never seen magic like this" You say to yourself mesmerised.</p>
         <p>The runes flare golden. Warmth washes over her and you.</p>
         <p>But the energy is too powerful. You try to call out to her to stop. But nothing comes from your throat.</p> 
-        <p>Alice is becoming engulfed in magic fire</p>
-      </code>
+        <p>Alice is becoming engulfed in magic fire</p>` %>
+          </code>
     </div>
 
     <hr/>
 
     <div class="navigation">
-      <p>All you can do is stare:</p>
-      <a href="/maze/alice-9"> All you can do is look</a>
-       </div>
+          <p><%= translations?.[language]?.choices?.prompt || 'All you can do is stare:' %></p>
+          <a href="/maze/alice-9"><%= translations?.[language]?.choices?.options?.[0] || 'All you can do is look' %></a>
+        </div>
       </div>
     </div>
   </div>

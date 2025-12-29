@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">The Chamber of Wisdom</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'The Chamber of Wisdom' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,20 +19,20 @@
       <div class="room-content">
     <div class="room-text">
       <code>
-        The third chamber is filled with ancient books and scrolls. Pedestals hold artifacts of forgotten civilizations. Knowledge radiates from every surface.
+            <%- translations?.[language]?.text || `The third chamber is filled with ancient books and scrolls. Pedestals hold artifacts of forgotten civilizations. Knowledge radiates from every surface.
         <p>You pick up a scroll and find it's written in a language you can somehow read: "The maze is not meant to trap, but to transform..."</p>
-        <p>Beyond there is a further chamber.</p>
-      </code>
+        <p>Beyond there is a further chamber.</p>` %>
+          </code>
     </div>
 
     <hr/>
 
     <div class="navigation">
-      <p>What would you like to do?</p>
-      <a href="/maze/heart-room-3-explore">Explore the room</a>
-      <a href="/maze/heart-room-4">Go to the next room </a>
-      <a href="/maze/heart-room-2">Go to the previous room </a>
-    </div>
+          <p><%= translations?.[language]?.choices?.prompt || 'What would you like to do?' %></p>
+          <a href="/maze/heart-room-3-explore"><%= translations?.[language]?.choices?.options?.[0] || 'Explore the room' %></a>
+          <a href="/maze/heart-room-4"><%= translations?.[language]?.choices?.options?.[1] || 'Go to the next room' %></a>
+          <a href="/maze/heart-room-2"><%= translations?.[language]?.choices?.options?.[2] || 'Go to the previous room' %></a>
+        </div>
       </div>
     </div>
   </div>

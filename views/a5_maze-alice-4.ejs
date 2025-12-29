@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">Below the Feast Hall</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'Below the Feast Hall' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,23 +19,23 @@
       <div class="room-content">
     <div class="room-text">
       <code>
-        You pull Alice through the trapdoor and climb lower down into darkness, landing on damp stone.
+            <%- translations?.[language]?.text || `You pull Alice through the trapdoor and climb lower down into darkness, landing on damp stone.
         <p>Above, the beast men don't notice. You hold Alice's body tight your hand around her mouth in case she screams.</p>
         <p>The beastmen eventually fade into darkness.</p> 
         <p>"This is too much" Alice whispers.</p>
         <p> "Be quiet".</p>
         <p>You light your lantern. The tunnel leads on to a wet passage way.</p>
-        <p>Alice touches your arm. "I am not sure I can take much more of this."</p>
-      </code>
+        <p>Alice touches your arm. "I am not sure I can take much more of this."</p>` %>
+          </code>
     </div>
 
     <hr/>
 
     <div class="navigation">
-      <p>Choose your path:</p>
-      <a href="/maze/alice-5">Take the passage and force Alice to stay with you</a>
-      <a href="/maze/alice-death-4">Tell Alice to wait here while you scout the flooded passage</a>
-    </div>
+          <p><%= translations?.[language]?.choices?.prompt || 'Choose your path:' %></p>
+          <a href="/maze/alice-5"><%= translations?.[language]?.choices?.options?.[0] || 'Take the passage and force Alice to stay with you' %></a>
+          <a href="/maze/alice-death-4"><%= translations?.[language]?.choices?.options?.[1] || 'Tell Alice to wait here while you scout the flooded passage' %></a>
+        </div>
       </div>
     </div>
   </div>

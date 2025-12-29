@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">The Obvious Trap</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'The Obvious Trap' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,21 +19,21 @@
       <div class="room-content">
         <div class="room-text">
           <code>
-            The center passage looks safe. Too safe. But maybe it really is the right choice?
+            <%- translations?.[language]?.text || `The center passage looks safe. Too safe. But maybe it really is the right choice?
             <p>You take three steps into the passage. Nothing happens. You take another step, feeling more confident.</p>
             <p>CLICK.</p>
             <p>A pressure plate. The walls begin to close in from both sides, grinding stone on stone. You try to run forward but there's no escape - the walls are too fast, the passage too long.</p>
             <p>You're crushed between ancient stone blocks, your bones cracking like kindling. Your last thought is that you should have known better.</p>
             <p style="color: #ff0000; font-weight: bold; text-align: center;">YOU HAVE DIED</p>
-            <p>The obvious safe choice is often the deadliest trap.</p>
+            <p>The obvious safe choice is often the deadliest trap.</p>` %>
           </code>
         </div>
 
         <hr/>
 
         <div class="navigation">
-          <p>Your journey ends here:</p>
-          <a href="/">Try again from the beginning</a>
+          <p><%= translations?.[language]?.choices?.prompt || 'Your journey ends here:' %></p>
+          <a href="/"><%= translations?.[language]?.choices?.options?.[0] || 'Try again from the beginning' %></a>
         </div>
       </div>
     </div>

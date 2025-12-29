@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">The prison cell </h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'The prison cell' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,19 +19,19 @@
       <div class="room-content">
         <div class="room-text">
           <code>
-            <p>You rush through a doorway into a small chamber. Your hands find a heavy wooden door and you slam it shut behind you. There's a thick iron bar mounted on the wall - you grab it and drop it into place across the door with a satisfying CLUNK.</p>
+            <%- translations?.[language]?.text || `<p>You rush through a doorway into a small chamber. Your hands find a heavy wooden door and you slam it shut behind you. There's a thick iron bar mounted on the wall - you grab it and drop it into place across the door with a satisfying CLUNK.</p>
             <p>You spin around, raising your lantern. The chamber holds a prison cell. Iron bars divide the room. Behind them, huddled in the corner, a human is whimpering.
             <p>Then you look past the cell - there's another door on the far side of the chamber, beyond the prison bars, an escape route.</p>
           
-           <p> Something tells you that there is something wrong with the far door. Choose wisely.</p>
+           <p> Something tells you that there is something wrong with the far door. Choose wisely.</p>` %>
           </code>
         </div>
         <hr/>
         <div class="navigation">
-          <p>Do you:</p>
-          <a href="/maze/prison-blonde-4">Investigate the prison cell and try to help the prisoner</a>
-          <a href="/maze/flee-alone">Flee through the far door alone</a>
-          </div>
+          <p><%= translations?.[language]?.choices?.prompt || 'Do you:' %></p>
+          <a href="/maze/prison-blonde-4"><%= translations?.[language]?.choices?.options?.[0] || 'Investigate the prison cell and try to help the prisoner' %></a>
+          <a href="/maze/flee-alone"><%= translations?.[language]?.choices?.options?.[1] || 'Flee through the far door alone' %></a>
+        </div>
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">The Heart of the Maze</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'The Heart of the Maze' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,19 +19,19 @@
       <div class="room-content">
     <div class="room-text">
       <code>
-        Alone you stand in a darkened corridor. There are strange glowing symbols on the celing. Purple rune signs on the floor.
+            <%- translations?.[language]?.text || `Alone you stand in a darkened corridor. There are strange glowing symbols on the celing. Purple rune signs on the floor.
         <p> You are near to the heart of the maze.</p>
         <p> You have found it. </p>
-        <p> The creator will pay.</p> 
-      </code>
+        <p> The creator will pay.</p>` %>
+          </code>
     </div>
 
     <hr/>
 
     <div class="navigation">
-      <p>You move on:</p>
-      <a href="/maze/heart-room-1">Enter the heart of the maze</a>
-    </div>
+          <p><%= translations?.[language]?.choices?.prompt || 'You move on:' %></p>
+          <a href="/maze/heart-room-1"><%= translations?.[language]?.choices?.options?.[0] || 'Enter the heart of the maze' %></a>
+        </div>
       </div>
     </div>
   </div>

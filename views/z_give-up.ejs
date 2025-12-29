@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">The Last Act</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'The Last Act' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -19,21 +18,21 @@
       </div>
       <div class="room-content">
     <div class="room-text">
-      <code>  
-        "So the only choice I have is to smash the crysal?" You inquire.
+      <code>
+            <%- translations?.[language]?.text || `"So the only choice I have is to smash the crysal?" You inquire.
         <p>"Yes that is the only choice."</p>
         <p>"I give up" You plead. "This isn't what I after."</p>
         <p> "You have no choice sadly"</p>
         <p> And with that you slam the crystal to the floor shattering it to a 1000 pieces.</p>
-        <p> Ahead a door appears. The light is warm, welcoming. You can feel it calling to you, promising not power or reward, but understanding. </p>
-      </code>
+        <p> Ahead a door appears. The light is warm, welcoming. You can feel it calling to you, promising not power or reward, but understanding. </p>` %>
+          </code>
     </div>
     <hr/>
 
     <div class="navigation">
-      <p>Continue forward:</p>
-      <a href="/maze/complete">Step through to the end</a>
-    </div>
+          <p><%= translations?.[language]?.choices?.prompt || 'Continue forward:' %></p>
+          <a href="/maze/complete"><%= translations?.[language]?.choices?.options?.[0] || 'Step through to the end' %></a>
+        </div>
       </div>
     </div>
   </div>

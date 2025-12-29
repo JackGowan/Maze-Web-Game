@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">The Choice to Continue</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'The Choice to Continue' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,19 +19,19 @@
       <div class="room-content">
     <div class="room-text">
       <code>
-        In a dark chamber you come across a silver sword. You take hold of it - the perfect weight, there seems to be a dim glow about it. There is no mistake, it is magical.
+            <%- translations?.[language]?.text || `In a dark chamber you come across a silver sword. You take hold of it - the perfect weight, there seems to be a dim glow about it. There is no mistake, it is magical.
         <p>The maze has tested you. You want to see what lies at its heart.</p>
         <p>The corridor winds downward, glowing fungi providing eerie green light. Air grows warmer and humid. You pass old storage rooms, abandoned guard posts, evidence of ancient civilization.</p>
-        <p> Blade in hand, you slowly make your way forward.</p>
-      </code>
+        <p> Blade in hand, you slowly make your way forward.</p>` %>
+          </code>
     </div>
 
     <hr/>
 
     <div class="navigation">
-      <p>You feel powerful</p>
-      <a href="/maze/sword-explore2">move on</a>
-    </div>
+          <p><%= translations?.[language]?.choices?.prompt || 'You feel powerful' %></p>
+          <a href="/maze/sword-explore2"><%= translations?.[language]?.choices?.options?.[0] || 'move on' %></a>
+        </div>
       </div>
     </div>
   </div>

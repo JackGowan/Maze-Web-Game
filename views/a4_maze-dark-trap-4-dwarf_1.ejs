@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">The trapped Dwarf</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'The trapped Dwarf' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,18 +19,17 @@
       <div class="room-content">
         <div class="room-text">
           <code>
-            You encounter a dwarf crushed by a huge boulder. 
+            <%- translations?.[language]?.text || `You encounter a dwarf crushed by a huge boulder. 
             <p> He must have been caught by a trap. You scan the area but no obvious threats are around you.</p>
             <p> Drawing closer you can see that the dward is still breathing. But he is firmly trapped there is no way you could possibly help him.</p>
-            <p> Do you try to wake the dwarf and ask him what he knows about the traps or continue on?</p>           
-         </code>
+            <p> Do you try to wake the dwarf and ask him what he knows about the traps or continue on?</p>` %>
+          </code>
         </div>
 
         <div class="navigation">
-          <p>what is your choice:</p>
-          <a href="/maze/dark-trap-4-dwarf-2">Interrogate the Dwarf</a>
-          <a href="/maze/dark-trap-5-roku-lair-1">Leave him. Focus on getting to the heart of the maze.</a>      
-        
+          <p><%= translations?.[language]?.choices?.prompt || 'what is your choice:' %></p>
+          <a href="/maze/dark-trap-4-dwarf-2"><%= translations?.[language]?.choices?.options?.[0] || 'Interrogate the Dwarf' %></a>
+          <a href="/maze/dark-trap-5-roku-lair-1"><%= translations?.[language]?.choices?.options?.[1] || 'Leave him. Focus on getting to the heart of the maze.' %></a>
         </div>
       </div>
     </div>

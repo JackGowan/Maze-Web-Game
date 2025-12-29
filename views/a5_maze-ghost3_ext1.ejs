@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">The Journey Recounted</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'The Journey Recounted' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,19 +19,19 @@
       <div class="room-content">
     <div class="room-text">
       <code>
-      The joy on Greg's face is unmistakeable - pure incredible joy. He hastens you to a new room to sit. He reveals from a cupboard his first master piece.
+            <%- translations?.[language]?.text || `The joy on Greg's face is unmistakeable - pure incredible joy. He hastens you to a new room to sit. He reveals from a cupboard his first master piece.
         <p>"This is my favourite number. 29"</p>
       <p>"Its very nice."</p>
-      <p> "I got some more." Greg rustles through sheet upon sheet of paper in a cupboard out of view.</p>
-      </code>
+      <p> "I got some more." Greg rustles through sheet upon sheet of paper in a cupboard out of view.</p>` %>
+          </code>
     </div>
 
     <hr/>
 
     <div class="navigation">
-      <p>It would be wise to continue:</p>
-       <a href="/maze/ghost3-ext2">Look at another watercolour picture</a>
-    </div>
+          <p><%= translations?.[language]?.choices?.prompt || 'It would be wise to continue:' %></p>
+          <a href="/maze/ghost3-ext2"><%= translations?.[language]?.choices?.options?.[0] || 'Look at another watercolour picture' %></a>
+        </div>
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">Escape from the Hall</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'Escape from the Hall' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,18 +19,18 @@
       <div class="room-content">
         <div class="room-text">
           <code>
-            <p>Your hand grips the handle of Door 29. The riddle echoes in your mind: "The demon lord's favourite number".
+            <%- translations?.[language]?.text || `<p>Your hand grips the handle of Door 29. The riddle echoes in your mind: "The demon lord's favourite number".
             You pull the door open.</p>
               <p>A shimmer of light. You can feel that you have the correct answer. You've proven yourself worthy.</p>
             <p>You step through, and the door slams shut behind you with finality. When you turn to look back, the door has vanished, replaced by solid stone.</p>
                  
-            <p>Ahead, you see what appears to be a prison corridor stretching into shadow...</p>
+            <p>Ahead, you see what appears to be a prison corridor stretching into shadow...</p>` %>
           </code>
         </div>
 
         <div class="navigation">
-          <p>Continue forward.</p>
-          <a href="/maze/prison">Enter the Prison</a>
+          <p><%= translations?.[language]?.choices?.prompt || 'Continue forward.' %></p>
+          <a href="/maze/prison"><%= translations?.[language]?.choices?.options?.[0] || 'Enter the Prison' %></a>
         </div>
       </div>
     </div>

@@ -84,6 +84,33 @@ body {
     color: #c7b7b7;
   }
 
+  .language-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+
+  .language-toggle .lang-btn {
+    padding: 8px 12px;
+    margin: 0 5px;
+    font-size: 14px;
+    border: 1px solid #00ff00;
+    background-color: #1a1a1a;
+    color: #00ff00;
+  }
+
+  .language-toggle .lang-btn:hover {
+    background-color: #00ff00;
+    color: #1a1a1a;
+  }
+
+  .language-toggle .lang-btn.active {
+    background-color: #00ff00;
+    color: #1a1a1a;
+    font-weight: bold;
+  }
+
   @media (max-width: 768px) {
     .content-wrapper {
       flex-direction: column;
@@ -92,6 +119,12 @@ body {
     .room-image {
       flex: 1 1 auto;
       max-width: 100%;
+    }
+
+    .language-toggle {
+      position: static;
+      text-align: center;
+      margin-bottom: 20px;
     }
   }
 

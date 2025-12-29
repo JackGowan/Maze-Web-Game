@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">The flight</h1>
+<h1 class="main-title">The flight</h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -34,8 +33,8 @@
     <hr/>
 
     <div class="navigation">
-      <p>You keep moving:</p>
-      <a href="/maze/dark-trap-6-sanjyu-golden-room-0">continue</a>
+      <p><%= translations?.[language]?.choices?.prompt || 'You keep moving:' %></p>
+      <a href="/maze/dark-trap-6-sanjyu-golden-room-0"><%= translations?.[language]?.choices?.options?.[0] || 'continue' %></a>
     </div>
       </div>
     </div>

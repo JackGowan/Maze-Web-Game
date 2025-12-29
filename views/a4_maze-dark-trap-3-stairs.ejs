@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">The Drowning Chamber</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'The Drowning Chamber' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,7 +19,7 @@
       <div class="room-content">
         <div class="room-text">
           <code>
-            <p>You choose the upward sloping corridor. Up usually means toward the surface, toward freedom.
+            <%- translations?.[language]?.text || `<p>You choose the upward sloping corridor. Up usually means toward the surface, toward freedom.
             The corridor is long but straight. </p>
             
        as soon as you reach the top step, a stone door slams down behind you, sealing the exit.</p>
@@ -28,15 +27,15 @@
             <p>The water reaches your waist. Your chest. Your chin. You tilt your head back, gasping for air as the water rises to the ceiling.</p>
             <p>You take one last breath before the chamber fills completely. You hold it as long as you can, swimming desperately, searching for an escape that doesn't exist. Eventually, your lungs give out.</p>
             <p style="color: #ff0000; font-weight: bold; text-align: center;">YOU HAVE DIED</p>
-            <p>Not all paths that lead down lead forward.</p>
+            <p>Not all paths that lead down lead forward.</p>` %>
           </code>
         </div>
 
         <hr/>
 
         <div class="navigation">
-          <p>Your journey ends here:</p>
-          <a href="/">Try again from the beginning</a>
+          <p><%= translations?.[language]?.choices?.prompt || 'Your journey ends here:' %></p>
+          <a href="/"><%= translations?.[language]?.choices?.options?.[0] || 'Try again from the beginning' %></a>
         </div>
       </div>
     </div>

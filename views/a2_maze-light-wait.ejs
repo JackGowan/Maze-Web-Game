@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">You stand your ground</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'You stand your ground' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,20 +19,20 @@
       <div class="room-content">
         <div class="room-text">
           <code>
-            You grip your elven lantern tightly, deciding to face whatever emerges from behind that door.
+            <%- translations?.[language]?.text || `You grip your elven lantern tightly, deciding to face whatever emerges from behind that door.
                   
           <p>A massive insectoid creature bursts through, its chitinous exoskeleton gleaming in the white light.</p>
             <p>You swing the lantern desperately, but the creature is too fast.</p>
             <p style="color: #ff0000; font-weight: bold; text-align: center;">YOU HAVE DIED</p>
-            <p>Sometimes bravery without preparation is simply foolishness.</p>
+            <p>Sometimes bravery without preparation is simply foolishness.</p>` %>
           </code>
         </div>
 
         <hr/>
 
         <div class="navigation">
-          <p>Your journey ends here:</p>
-          <a href="/">Try again from the beginning</a>
+          <p><%= translations?.[language]?.choices?.prompt || 'Your journey ends here:' %></p>
+          <a href="/"><%= translations?.[language]?.choices?.options?.[0] || 'Try again from the beginning' %></a>
         </div>
       </div>
     </div>

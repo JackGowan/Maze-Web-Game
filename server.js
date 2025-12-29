@@ -1,5 +1,7 @@
 const express = require('express');
+const session = require('express-session');
 const path = require('path');
+const translations = require('./translations');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -8,9 +10,35 @@ const PORT = process.env.PORT || 3000;
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+// Session middleware
+app.use(session({
+  secret: 'maze-game-secret-key',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}));
+
+// Middleware to set default language
+app.use((req, res, next) => {
+  if (!req.session.language) {
+    req.session.language = 'en';
+  }
+  next();
+});
+
 // Serve static files (CSS, images, etc.)
 app.use('/css', express.static(path.join(__dirname, 'public/css')));
 app.use('/images', express.static(path.join(__dirname, 'public/images')));
+
+// Language switching route
+app.get('/set-language/:lang', (req, res) => {
+  const { lang } = req.params;
+  if (lang === 'en' || lang === 'zh') {
+    req.session.language = lang;
+  }
+  const redirectUrl = req.get('Referrer') || '/';
+  res.redirect(redirectUrl);
+});
 
 // Route mapping for all maze pages
 const routes = {
@@ -137,7 +165,14 @@ const routes = {
 // Create routes dynamically
 Object.keys(routes).forEach(route => {
   app.get(route, (req, res) => {
-    res.render(routes[route]);
+    const pageId = routes[route];
+    const lang = req.session.language || 'en';
+    const pageTranslations = translations[pageId] || {};
+
+    res.render(pageId, {
+      language: lang,
+      translations: pageTranslations
+    });
   });
 });
 

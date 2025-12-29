@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">Rejection</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'Rejection' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,23 +19,23 @@
       <div class="room-content">
     <div class="room-text">
       <code>
-        "That's too personal. I've told you enough stories. My inner thoughts are my own."
+            <%- translations?.[language]?.text || `"That's too personal. I've told you enough stories. My inner thoughts are my own."
         <p>Silence. Heavy, terrible silence.</p>
         <p>Then the ghost's voice, cold as the void between stars: "TOO PERSONAL? TOO... PERSONAL?"</p>
         <p>"I HAVE SHARED THIS CAVERN WITH NOTHING BUT STONE AND SILENCE FOR TEN THOUSAND YEARS. I ASK FOR CONNECTION, FOR TRUTH, FOR HONEST SHARING, AND YOU DENY ME?"</p>
         <p>The ghost's form becomes something monstrous - all teeth and darkness and hunger. "IF YOU WILL NOT SHARE YOUR PAIN WILLINGLY, I WILL EXTRACT IT BY FORCE."</p>
         <p>Spectral claws dig into your mind, ripping through memories, tearing apart thoughts. The ghost takes what it wants, but the process destroys your sanity. You collapse, screaming, as your mind fractures into pieces.</p>
         <p style="color: #ff0000; font-weight: bold; text-align: center;">YOU HAVE DIED</p>
-        <p>The ghost asked for vulnerability, for connection. To deny it was to invite violation.</p>
-      </code>
+        <p>The ghost asked for vulnerability, for connection. To deny it was to invite violation.</p>` %>
+          </code>
     </div>
 
     <hr/>
 
     <div class="navigation">
-      <p>Your journey ends here:</p>
-      <a href="/">Try again from the beginning</a>
-    </div>
+          <p><%= translations?.[language]?.choices?.prompt || 'Your journey ends here:' %></p>
+          <a href="/"><%= translations?.[language]?.choices?.options?.[0] || 'Try again from the beginning' %></a>
+        </div>
       </div>
     </div>
   </div>

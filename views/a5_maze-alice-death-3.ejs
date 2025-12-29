@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">Abandoned</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'Abandoned' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,22 +19,22 @@
       <div class="room-content">
     <div class="room-text">
       <code>
-        You dive into the barrel alone. Cramped, reeking of stale ale, but hidden.
+            <%- translations?.[language]?.text || `You dive into the barrel alone. Cramped, reeking of stale ale, but hidden.
         <p>Through a crack, you watch Alice search for cover. Her frame and blonde hair make her conspicuous. She dives under a table as three beast men enter.</p>
         <p>They smell something different. One snorts and points toward her table.</p>
         <p>"Fresh human." They flip the table aside. Alice screams.</p>
         <p>After they drag her away, you wait for hours. Finally emerge. Without Alice's magic, the deeper maze is sealed. You wander lost until thirst and hunger claim you.</p>
         <p style="color: #ff0000; font-weight: bold; text-align: center;">YOU HAVE DIED</p>
-        <p>Two survive together, or both perish apart.</p>
-      </code>
+        <p>Two survive together, or both perish apart.</p>` %>
+          </code>
     </div>
 
     <hr/>
 
     <div class="navigation">
-      <p>Your journey ends here:</p>
-      <a href="/">Try again from the beginning</a>
-    </div>
+          <p><%= translations?.[language]?.choices?.prompt || 'Your journey ends here:' %></p>
+          <a href="/"><%= translations?.[language]?.choices?.options?.[0] || 'Try again from the beginning' %></a>
+        </div>
       </div>
     </div>
   </div>

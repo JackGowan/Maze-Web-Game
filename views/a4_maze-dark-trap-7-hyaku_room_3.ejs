@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">Death by Poison</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'Death by Poison' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,18 +19,17 @@
       <div class="room-content">
         <div class="room-text">
           <code>
-            <p>You lift the chalice to your lips. The liquid shimmers beautifully in the golden light.</p>
+            <%- translations?.[language]?.text || `<p>You lift the chalice to your lips. The liquid shimmers beautifully in the golden light.</p>
             <p>The first sip tastes sweet, almost pleasant.Then the burning begins.</p>
             <p>Your throat constricts. Your vision blurs. The chalice slips from your trembling fingers and shatters on the floor. Soon you too fall down.</p>
             <p style="color: #ff0000; font-weight: bold; text-align: center;">YOU HAVE DIED</p>
-            <p>The Golden Chamber claims another victim. Be careful of others...</p>
-          
+            <p>The Golden Chamber claims another victim. Be careful of others...</p>` %>
           </code>
         </div>
 
         <div class="navigation">
-          <p>Your journey ends here.</p>
-          <a href="/">Start Over</a>
+          <p><%= translations?.[language]?.choices?.prompt || 'Your journey ends here.' %></p>
+          <a href="/"><%= translations?.[language]?.choices?.options?.[0] || 'Start Over' %></a>
         </div>
       </div>
     </div>

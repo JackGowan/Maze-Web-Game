@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">You press forward</h1>
+<h1 class="main-title">You press forward</h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -31,8 +30,8 @@
         <hr/>
 
         <div class="navigation">
-          <p>Your only path in the maze is up the staircase:</p>
-          <a href="/maze/hide-stairs">Cautiously you move up the staircase</a>
+          <p><%= translations?.[language]?.choices?.prompt || 'Your only path in the maze is up the staircase:' %></p>
+          <a href="/maze/hide-stairs"><%= translations?.[language]?.choices?.options?.[0] || 'Cautiously you move up the staircase' %></a>
         </div>
       </div>
     </div>

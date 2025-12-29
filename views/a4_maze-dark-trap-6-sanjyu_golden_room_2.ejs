@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">Death by a Thousand Arrows</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'Death by a Thousand Arrows' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,7 +19,7 @@
       <div class="room-content">
         <div class="room-text">
           <code>
-            <p>Your finger presses against the cold stone panel.</p>
+            <%- translations?.[language]?.text || `<p>Your finger presses against the cold stone panel.</p>
             <p>For a moment, nothing happens.</p>
             <p>Then you hear it—the deadly whisper of a thousand bowstrings releasing at once.</p>
             <br>
@@ -29,13 +28,13 @@
             <p>The arrows find their mark before you can even scream. Your body falls, riddled with shafts, joining the countless others who failed to solve the riddle.</p>
             <p>The Chamber of Six claims another victim.</p>
             <br>
-            <p><strong>YOU HAVE DIED</strong></p>
+            <p><strong>YOU HAVE DIED</strong></p>` %>
           </code>
         </div>
 
         <div class="navigation">
-          <p>Your journey ends here.</p>
-          <a href="/">Start Over</a>
+          <p><%= translations?.[language]?.choices?.prompt || 'Your journey ends here.' %></p>
+          <a href="/"><%= translations?.[language]?.choices?.options?.[0] || 'Start Over' %></a>
         </div>
       </div>
     </div>

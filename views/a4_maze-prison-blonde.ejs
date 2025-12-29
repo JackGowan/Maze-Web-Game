@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-  <h1 class="main-title">You free the prisoner</h1>
+<h1 class="main-title"><%= translations?.[language]?.title || 'You free the prisoner' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
@@ -20,7 +19,7 @@
       <div class="room-content">
         <div class="room-text">
           <code>
-            You grab a rusty key on the wall and unlock the cell door. The prisoner, a blonde woman stumbles out. Her large chest heaves with relief as she catches her breath.
+            <%- translations?.[language]?.text || `You grab a rusty key on the wall and unlock the cell door. The prisoner, a blonde woman stumbles out. Her large chest heaves with relief as she catches her breath.
             <p>"Thank you," she gasps. "I'm Alice. I was captured three days ago by the beast men who guard this maze."</p>
             <p>Alice's eyes are wide with fear, but there's something else there too - determination. "Thank you for saving me." She says again. "But the maze master won't be pleased if he finds out." </p>
             <p>"The Mase master is near?"</p>
@@ -33,15 +32,15 @@
             <p>The stone wall to your right shimmers and becomes transparent, revealing a hidden staircase descending into darkness.</p>
             <p>"I will be able to guide you some of the way." Alice says, her voice trembling. "This passage leads deeper into the maze, toward its heart. The beast men patrol these lower levels. We must be careful."</p>
             <p>She clutches your arm, her fingers trembling. "Please... don't let them find us. I can't go back in that cell."</p>
-            <p> "I will be firm but fair. And protect you at all costs."</p>
+            <p> "I will be firm but fair. And protect you at all costs."</p>` %>
           </code>
         </div>
 
         <hr/>
 
         <div class="navigation">
-          <p>You have no choice but forward:</p>
-          <a href="/maze/alice-1">Descend with Alice into the depths</a>
+          <p><%= translations?.[language]?.choices?.prompt || 'You have no choice but forward:' %></p>
+          <a href="/maze/alice-1"><%= translations?.[language]?.choices?.options?.[0] || 'Descend with Alice into the depths' %></a>
         </div>
       </div>
     </div>

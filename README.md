@@ -35,9 +35,18 @@ The application will start on `http://localhost:3000`
 ## How to Play
 
 1. Open your browser and go to `http://localhost:3000`
-2. Read the story and make choices by clicking on the available options
-3. Each choice leads to a different path through the maze
-4. Try to find your way out - there are multiple endings!
+2. **Choose your language**: Click "English" or "繁體中文" in the top-right corner
+3. Read the story and make choices by clicking on the available options
+4. Each choice leads to a different path through the maze
+5. Try to find your way out - there are multiple endings!
+
+## Language Support
+
+The game is available in:
+- **English**
+- **繁體中文 (Traditional Chinese)**
+
+Switch languages anytime using the toggle button in the top-right corner. See [LANGUAGE_SUPPORT.md](LANGUAGE_SUPPORT.md) for details.
 
 ## Deploy to the Web
 
@@ -70,6 +79,7 @@ Maze_Web/
 
 - **Node.js** - JavaScript runtime
 - **Express** - Web application framework
+- **Express Session** - Session management for language preferences
 - **EJS** - Templating engine
 - **CSS** - Styling
 

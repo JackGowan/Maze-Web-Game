@@ -1,41 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
 <meta name="author" content="Jack Gowan">
 <meta name="description" content="first built maze">
-<title>The Maze - [ROOM NAME]</title>
+<title>The Maze - <%= language === 'zh' ? '迷宮' : 'The Maze' %></title>
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
 
-  <h1 class="main-title">THIS IS THE START</h1>
+  <!-- Language Toggle -->
+  <div class="language-toggle">
+    <a href="/set-language/en" class="lang-btn <%= language === 'en' ? 'active' : '' %>">English</a>
+    <a href="/set-language/zh" class="lang-btn <%= language === 'zh' ? 'active' : '' %>">繁體中文</a>
+  </div>
+
+  <h1 class="main-title"><%= translations[language]?.title || 'THIS IS THE START' %></h1>
 
   <div class="room-container">
     <div class="content-wrapper">
       <div class="room-image">
-        <img src="/images/a_maze-start.png" alt="Dimly lit dungeon cell">
+        <img src="/images/a_maze-start.png" alt="<%= language === 'zh' ? '昏暗的地牢牢房' : 'Dimly lit dungeon cell' %>">
       </div>
       <div class="room-content">
         <div class="room-text">
-          <code>Welcome Traveler. You are at the start of the maze.
+          <code><%- translations[language]?.text || `Welcome Traveler. You are at the start of the maze.
             <p>You wake up to find yourself in a dimly lit dungeon cell. You know how you got here but those details are not important right now. Finding the way out of the maze is all that matters.</p>
             A lantern,clearly of elven origin and made of fine silver with little weight about it highlights the bare stone room walls. There is nothing of interest in the room.
             You pickup the lantern and with skillful means unlock the cell door. Nervous you scan the even darker corridor outside.
             <p>To the left you see light upahead and hear stange insect like sounds.</p>
             <p>To the right all is dark and all is calm.</p>
-            <p> You are unarmed.</p>  
+            <p> You are unarmed.</p>` %>
           </code>
         </div>
 
         <hr/>
 
         <div class="navigation">
-          <p>Choose your path:</p>
-          <a href="/maze/left-light">head left towards the light</a>
-          <a href="/maze/right-dark">head right into the dark</a>
-         <a href="/maze/wait">wait and think</a>
+          <p><%= translations[language]?.choices?.prompt || 'Choose your path:' %></p>
+          <a href="/maze/left-light"><%= translations[language]?.choices?.options?.[0] || 'head left towards the light' %></a>
+          <a href="/maze/right-dark"><%= translations[language]?.choices?.options?.[1] || 'head right into the dark' %></a>
+         <a href="/maze/wait"><%= translations[language]?.choices?.options?.[2] || 'wait and think' %></a>
         </div>
       </div>
     </div>

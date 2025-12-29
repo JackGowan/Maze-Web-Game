@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language === 'zh' ? 'zh-TW' : 'en' %>">
 <head>
 <!-- meta attributes -->
 <meta charset="utf-8">
 <meta name="author" content="Jack Gowan">
 <meta name="description" content="first built maze">
-<title>The Maze - [ROOM NAME]</title>
+<title>The Maze - <%= language === 'zh' ? '迷宮' : 'The Maze' %></title>
 <link rel="stylesheet" href="/css/a_maze_style.css">
 </head>
 <body>
-
-    <div class="room-container">
+<div class="room-container">
       <div class="content-wrapper">
         <div class="room-image">
           <img src="/images/a1_maze-left_light.png" alt="Following the light towards the statue">
@@ -18,19 +17,18 @@
         <div class="room-content">
           <div class="room-text">
             <code>
-              In the dark dungeon hallway, you pass by a series of locked doors. Unnatural chittering and scratches and rustles come from the doors. It seems like there are large strange creatures inside each cell. Gulping, you make your way towards the halo of light at the end of the hallway.
+            <%- translations?.[language]?.text || `In the dark dungeon hallway, you pass by a series of locked doors. Unnatural chittering and scratches and rustles come from the doors. It seems like there are large strange creatures inside each cell. Gulping, you make your way towards the halo of light at the end of the hallway.
               <p>You see the light is coming from a female statute with two beaming eyes. Its mouth is open and you hear feint breathing coming from it.
                Curious you draw nearer to investgate. The woman looks like the Roman Goddess Ceres but you can't be sure...
-               <p>Something about the statue fascinates you. Yet you are also alarmed by the rising stange insect like noises in the doors behind you.</p>
-              
-               </code>
+               <p>Something about the statue fascinates you. Yet you are also alarmed by the rising stange insect like noises in the doors behind you.</p>` %>
+          </code>
         </div>
   <hr/>
 
        <div class="navigation">
-          <p>Do you:</p>
-       <a href="/maze/touch-statue">Further explore the statue</a>
-            <a href="/maze/ignore-statue">Move past the statue and continue on your journey</a>
+          <p><%= translations?.[language]?.choices?.prompt || 'Do you:' %></p>
+          <a href="/maze/touch-statue"><%= translations?.[language]?.choices?.options?.[0] || 'Further explore the statue' %></a>
+          <a href="/maze/ignore-statue"><%= translations?.[language]?.choices?.options?.[1] || 'Move past the statue and continue on your journey' %></a>
         </div>
 
 
