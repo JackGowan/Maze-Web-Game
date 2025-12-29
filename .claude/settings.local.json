@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3:*)",
+      "Bash(for file in *.html)",
+      "Bash(do mv \"$file\" \"$file%.html.ejs\")",
+      "Bash(done)",
+      "Bash(npm install:*)",
+      "Bash(node update-paths.js:*)",
+      "Bash(timeout 3 node:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
