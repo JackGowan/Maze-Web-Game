@@ -38,5 +38,14 @@
         </div>
       </div>
     </div>
-  </body>
+
+  <script>
+    // Detect back button and redirect to start
+    window.onpageshow = function(event) {
+      if (event.persisted || (performance.navigation && performance.navigation.type === 2)) {
+        window.location.replace('/');
+      }
+    };
+  </script>
+</body>
   </html>
