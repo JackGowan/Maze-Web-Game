@@ -1678,8 +1678,8 @@ const translations = {
       choices: {
         prompt: "What do you do:",
         options: [
-                  "Take the rough steps downward",
-                  "Crawl through the space behind the pillar"
+                  "Send Alice through the crawlspace first to scout ahead",
+                  "Descend the rough steps, keeping Alice close"
         ]
       }
     },
@@ -1693,8 +1693,8 @@ const translations = {
       choices: {
         prompt: "您將如何選擇：",
         options: [
-                  "踏上粗糙的台階向下",
-                  "爬過倒塌柱子後面的空間"
+                  "先讓愛麗絲通過爬行空間探路",
+                  "沿著粗糙的台階下降，讓愛麗絲靠近"
         ]
       }
     }
